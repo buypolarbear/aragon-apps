@@ -118,7 +118,7 @@ contract Finance is AragonApp {
     function initialize(IVaultConnector _vault, uint64 _periodDuration) external onlyInit {
         initialized();
 
-        require(_periodDuration >= 1 day);
+        require(_periodDuration >= 1 days);
 
         vault = _vault;
 
@@ -233,7 +233,7 @@ contract Finance is AragonApp {
     * @param _periodDuration Duration in seconds for accounting periods
     */
     function setPeriodDuration(uint64 _periodDuration) authP(CHANGE_PERIOD_ROLE, arr(uint256(_periodDuration), uint256(settings.periodDuration))) transitionsPeriod external {
-        require(_periodDuration >= 1 day);
+        require(_periodDuration >= 1 days);
         settings.periodDuration = _periodDuration;
         ChangePeriodDuration(_periodDuration);
     }
